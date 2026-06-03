@@ -86,9 +86,18 @@ nav {
   font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 0.5em;
-  color: #ffff00;
-  text-shadow: 0 0 20px rgba(255, 255, 0, 0.2);
+  background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logo-shine 6s linear infinite;
   text-decoration: none;
+}
+
+@keyframes logo-shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .nav-links { display: flex; gap: 40px; }
@@ -285,6 +294,225 @@ footer {
   text-align: center;
 }
 
+/* Gallery Page Styles */
+.gallery-page {
+  padding-top: 150px;
+}
+
+.gallery-hero {
+  text-align: center;
+  padding: 100px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gallery-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: 30px;
+}
+
+.gallery-subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px 150px 60px;
+}
+
+.gallery-item {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(3, 3, 3, 0.9) 0%, rgba(3, 3, 3, 0.2) 70%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-info h3 {
+  font-size: 1.8rem;
+  color: var(--text-white);
+  margin-bottom: 10px;
+}
+
+.gallery-info p {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Inquiry Form Page Styles */
+.inquire-page {
+  padding-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.inquire-hero {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 800px;
+}
+
+.inquire-title {
+  font-size: clamp(3rem, 7vw, 5rem);
+  margin-bottom: 20px;
+}
+
+.inquire-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.inquiry-container {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 20px 150px 20px;
+}
+
+.inquiry-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 60px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form-row {
+  display: flex;
+  gap: 40px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-gray);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.02);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 15px 0;
+  color: var(--text-white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.5s ease;
+}
+
+.form-group select option {
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-bottom-color: var(--gold);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 22px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background: var(--gold);
+  color: var(--bg-dark);
+  box-shadow: 0 0 40px var(--gold-muted);
+}
+
+.success-message {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.success-message h3 {
+  font-size: 2.2rem;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.success-message p {
+  color: var(--text-gray);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
 @media (max-width: 1024px) {
   .pillars-container { grid-template-columns: 1fr; gap: 60px; }
   .about-row, .about-row.reverse { flex-direction: column; gap: 40px; margin-bottom: 80px; }
@@ -292,4 +520,8 @@ footer {
   .about-content { padding: 40px 20px; }
   .cta-title { font-size: 2.5rem; }
   .nav-logo { font-size: 1.4rem; }
+  .gallery-grid { grid-template-columns: 1fr; gap: 40px; padding: 0 20px 80px 20px; }
+  .gallery-item { height: 400px; }
+  .inquiry-card { padding: 40px 20px; }
+  .form-row { flex-direction: column; gap: 40px; }
 }

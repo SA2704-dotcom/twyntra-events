@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useEffect } from 'react';
+import React, { useLayoutEffect, useRef, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -87,9 +87,10 @@ const Nav = () => (
   <nav>
     <Link to="/" className="nav-logo">TWYNTRA</Link>
     <div className="nav-links">
-      <Link to="/">Orbit</Link>
+      <Link to="/">Home</Link>
       <Link to="/about">About</Link>
-      <a href="mailto:curate@twyntra.com">Inquire</a>
+      <Link to="/gallery">Gallery</Link>
+      <Link to="/inquire">Inquire</Link>
     </div>
   </nav>
 );
@@ -237,6 +238,183 @@ const ScrollToTop = () => {
   return null;
 };
 
+const Gallery = () => {
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.gallery-title', { opacity: 0, y: 50, duration: 1.5, ease: 'power4.out' });
+      gsap.utils.toArray<HTMLElement>('.gallery-item').forEach((item, i) => {
+        gsap.from(item, {
+          scrollTrigger: { trigger: item, start: 'top 85%' },
+          opacity: 0,
+          y: 60,
+          duration: 1.5,
+          delay: i * 0.1,
+          ease: 'power4.out',
+        });
+      });
+    }, galleryRef);
+    return () => ctx.revert();
+  }, []);
+
+  const galleryItems = [
+    {
+      src: '/gallery_gala.png',
+      alt: 'Luxury Gala Reception',
+      title: 'Galactic Galas',
+      desc: 'Bespoke indoor receptions illuminated by thousands of suspended stars and soft stellar nebulae.'
+    },
+    {
+      src: '/gallery_lounge.png',
+      alt: 'Celestial Outdoor Lounge',
+      title: 'Stellar Lounges',
+      desc: 'Open-air, celestial lounge settings with warm minimal lighting under the infinite night sky.'
+    },
+    {
+      src: '/gallery_architecture.png',
+      alt: 'Futuristic Pavilion Art Show',
+      title: 'Cosmic Pavilions',
+      desc: 'Exquisite modern pavilions blending twilight ambiance with luxury architectural installations.'
+    }
+  ];
+
+  return (
+    <div ref={galleryRef} className="gallery-page">
+      <section className="gallery-hero">
+        <p className="gallery-subtitle">A Visual Orbit</p>
+        <h1 className="gallery-title">The Gallery</h1>
+      </section>
+
+      <section className="gallery-grid">
+        {galleryItems.map((item, index) => (
+          <div key={index} className="gallery-item">
+            <img src={item.src} alt={item.alt} />
+            <div className="gallery-overlay">
+              <div className="gallery-info">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+    </div>
+  );
+};
+
+const Inquire = () => {
+  const inquireRef = useRef<HTMLDivElement>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    eventType: 'gala',
+    message: ''
+  });
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from('.inquire-title', { opacity: 0, y: 50, duration: 1.5, ease: 'power4.out' });
+      gsap.from('.inquiry-card', { opacity: 0, y: 60, duration: 1.5, delay: 0.2, ease: 'power4.out' });
+    }, inquireRef);
+    return () => ctx.revert();
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setTimeout(() => {
+      setSubmitted(true);
+    }, 800);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  return (
+    <div ref={inquireRef} className="inquire-page">
+      <section className="inquire-hero">
+        <p className="inquire-subtitle">Connect With Us</p>
+        <h1 className="inquire-title">Begin Your Orbit</h1>
+      </section>
+
+      <div className="inquiry-container">
+        <div className="inquiry-card">
+          {submitted ? (
+            <div className="success-message">
+              <h3>Inquiry Received</h3>
+              <p>Thank you for initiating your orbit. A celestial curator will contact you shortly to co-create your universe.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="inquiry-form">
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="Enter your email"
+                  />
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="eventType">Experience Type</label>
+                <select
+                  id="eventType"
+                  name="eventType"
+                  value={formData.eventType}
+                  onChange={handleChange}
+                >
+                  <option value="gala">Galactic Gala</option>
+                  <option value="lounge">Stellar Lounge / Reception</option>
+                  <option value="pavilion">Cosmic Pavilion Exhibition</option>
+                  <option value="other">Other Bespoke Experience</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="message">Your Vision</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  placeholder="Share a brief description of your vision..."
+                ></textarea>
+              </div>
+
+              <button type="submit" className="submit-button">
+                Send Inquiry
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -252,13 +430,15 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/inquire" element={<Inquire />} />
         </Routes>
 
         <section className="cta-section">
           <div className="cta-content">
             <h2 className="cta-title">Begin Your Orbit</h2>
             <p className="cta-subtitle">Limited engagements for the discerning few.</p>
-            <a href="mailto:curate@twyntra.com" className="cta-button">Inquire</a>
+            <Link to="/inquire" className="cta-button">Inquire</Link>
           </div>
         </section>
 
