@@ -260,6 +260,48 @@ const Gallery = () => {
 
   const galleryItems = [
     {
+      src: '/indian_wedding.png',
+      alt: 'Luxury Indian Wedding',
+      title: 'Celestial Weddings',
+      desc: 'Grand luxury Indian mandaps adorned with rich traditional floral design under a canopy of stars.'
+    },
+    {
+      src: '/indian_reception.png',
+      alt: 'Royal Indian Reception',
+      title: 'Royal Receptions',
+      desc: 'Majestic stages illuminated by crystal chandeliers, gold drapes, and lush floral walls.'
+    },
+    {
+      src: '/indian_birthday.png',
+      alt: 'Vibrant Indian Birthday Celebration',
+      title: 'Bespoke Birthdays',
+      desc: 'Festive outdoor gatherings featuring vibrant silk drapes, hanging lanterns, and diwan seating.'
+    },
+    {
+      src: '/indian_club.png',
+      alt: 'Modern Indian Club Event',
+      title: 'Stellar Club Events',
+      desc: 'High-energy lounge events blending modern neon aesthetics with traditional Indian motifs.'
+    },
+    {
+      src: '/indian_farewell.png',
+      alt: 'Intimate Indian Farewell Dinner',
+      title: 'Cosmic Farewells',
+      desc: 'Elegant twilight dinners with low-sitting cushions and a blanket of glowing fairy lights.'
+    },
+    {
+      src: '/indian_annual.png',
+      alt: 'Indian Corporate Annual Gala',
+      title: 'Annual Celebrations',
+      desc: 'Fusion stages featuring traditional geometric jaali screens illuminated by intelligent lighting.'
+    },
+    {
+      src: '/indian_corporate.png',
+      alt: 'Premium Indian Corporate Reception',
+      title: 'Corporate Events',
+      desc: 'Luxury corporate environments adorned with gold accents, modern rangoli, and botanical art.'
+    },
+    {
       src: '/gallery_gala.png',
       alt: 'Luxury Gala Reception',
       title: 'Galactic Galas',
