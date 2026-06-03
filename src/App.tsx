@@ -193,38 +193,38 @@ const About = () => {
       <section className="about-hero">
         <h1 className="about-title">The Curators</h1>
         <div className="about-intro">
-          <p>Twyntra Events was born from a singular obsession: to merge the infinite wonder of the cosmos with the grounded precision of earthly architecture.</p>
+          <p>Twyntra Events was born from a singular obsession: to merge the rich cultural legacy of Tamil Nadu with the cosmic precision of modern design.</p>
         </div>
       </section>
 
       <section className="about-content">
         <div className="about-row">
           <div className="about-text">
-            <h2>Our Origin</h2>
-            <p>Founded in 2012, we began as a small collective of artists and engineers. Today, we are global curators of the "Celestial Experience." We don't just plan events; we architect memories that live in the stars.</p>
+            <h2>Our Heritage</h2>
+            <p>Founded in 2012, we began as a small collective of artists and designers. Today, we are curators of traditional luxury, architecting memories that blend South Indian heritage with the stars.</p>
           </div>
           <div className="about-img">
-            <img src="/moodboard_lux.png" alt="Vision" />
+            <img src="/tamil_wedding.png" alt="Tamil Wedding Kalyanam" />
           </div>
         </div>
 
         <div className="about-row reverse">
           <div className="about-text">
-            <h2>The Standard</h2>
-            <p>Every event is a bespoke ecosystem. From the lighting that mimics the Orion nebula to the acoustics that resonate with silence, we leave no stone unturned in our pursuit of perfection.</p>
+            <h2>Traditional Standard</h2>
+            <p>Every celebration is a sacred ecosystem. From the lighting of the traditional Kuthuvilakku to the rich weaves of Kanchipuram silk, we integrate local Tamil traditions with contemporary design principles to create flawless events.</p>
           </div>
           <div className="about-img">
-            <img src="/table_lux.png" alt="Precision" />
+            <img src="/tamil_birthday.png" alt="South Indian Birthday Celebration" />
           </div>
         </div>
 
         <div className="about-row">
           <div className="about-text">
-            <h2>Global Reach</h2>
-            <p>From private islands in the Maldives to the historic estates of Tuscany, Twyntra brings the apex of luxury to the most discerning clients across the globe.</p>
+            <h2>Heritage Venues</h2>
+            <p>From the grand heritage courtyard palaces of Chettinad to the luxury seaside estates of Chennai, Twyntra brings the apex of South Indian culture and luxury together for discerning clients across the region.</p>
           </div>
           <div className="about-img">
-            <img src="/wedding_lux.png" alt="Legacy" />
+            <img src="/tamil_reception.png" alt="Tamil Wedding Reception" />
           </div>
         </div>
       </section>
@@ -324,7 +324,7 @@ const Gallery = () => {
   return (
     <div ref={galleryRef} className="gallery-page">
       <section className="gallery-hero">
-        <p className="gallery-subtitle">A Visual Orbit</p>
+        <p className="gallery-subtitle">Our Visual Journey</p>
         <h1 className="gallery-title">The Gallery</h1>
       </section>
 
@@ -379,7 +379,7 @@ const Inquire = () => {
     <div ref={inquireRef} className="inquire-page">
       <section className="inquire-hero">
         <p className="inquire-subtitle">Connect With Us</p>
-        <h1 className="inquire-title">Begin Your Orbit</h1>
+        <h1 className="inquire-title">Begin Your Celebration</h1>
       </section>
 
       <div className="inquiry-container">
@@ -387,7 +387,7 @@ const Inquire = () => {
           {submitted ? (
             <div className="success-message">
               <h3>Inquiry Received</h3>
-              <p>Thank you for initiating your orbit. A celestial curator will contact you shortly to co-create your universe.</p>
+              <p>Thank you for connecting with us. A traditional luxury curator will contact you shortly to co-create your celebration.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="inquiry-form">
@@ -478,7 +478,7 @@ const App: React.FC = () => {
 
         <section className="cta-section">
           <div className="cta-content">
-            <h2 className="cta-title">Begin Your Orbit</h2>
+            <h2 className="cta-title">Begin Your Celebration</h2>
             <p className="cta-subtitle">Limited engagements for the discerning few.</p>
             <Link to="/inquire" className="cta-button">Inquire</Link>
           </div>

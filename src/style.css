@@ -74,11 +74,15 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 40px 60px;
+  padding: 20px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
+  background: rgba(3, 3, 3, 0.75);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-logo {
